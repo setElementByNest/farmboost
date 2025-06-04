@@ -1,0 +1,13 @@
+{
+    "login": {
+        "login_head1": "Welcome to",
+        "login_head2": "Farm Boost",
+        "login_topic1": "Login",
+        "login_button1": "Login",
+        "login_button2": "Login with Google",
+        "login_button3": "Create a new account",
+        "login_line1": "or",
+        "login_input1": "Username or Email",
+        "login_input2": "Password"
+    }
+}

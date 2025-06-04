@@ -1,0 +1,13 @@
+{
+    "login": {
+        "login_head1": "ยินดีต้อนรับเข้าสู่",
+        "login_head2": "Farm Boost",
+        "login_topic1": "เข้าสู่ระบบ",
+        "login_button1": "เข้าสู่ระบบ",
+        "login_button2": "เข้าสู่ระบบด้วย Google",
+        "login_button3": "สร้างบัญชีผู้ใช้ใหม่",
+        "login_line1": "หรือ",
+        "login_input1": "ชื่อผู้ใช้งาน หรือ อีเมล",
+        "login_input2": "รหัสผ่าน"
+    }
+}
