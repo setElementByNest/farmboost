@@ -17,7 +17,7 @@ i18n
   .init({
     compatibilityJSON: 'v3',
     resources,
-    lng: RNLocalize.getLocales()[0].languageCode || 'en',
+    lng: 'THA',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,

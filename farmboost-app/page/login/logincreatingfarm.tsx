@@ -1,13 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView, TextInput } from 'react-native'
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useEffect, useState } from 'react'
+import { View, Text, ScrollView } from 'react-native'
 import { Bar } from 'react-native-progress';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
+import styles from './Styles';
 
-interface Props {
-    gotoCreatingDone: () => void;
-}
+type Props = NativeStackScreenProps<RootStackParamList, 'creatingfarm'>;
 
-const Creatingfarm = ({ gotoCreatingDone }: Props) => {
+const LoginCreatingFarm = ({ navigation }: Props) => {
     const [percent, setPercent] = useState<number>(0);
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,7 +16,7 @@ const Creatingfarm = ({ gotoCreatingDone }: Props) => {
                     return prev + 0.2;
                 } else {
                     clearInterval(interval);
-                    gotoCreatingDone();
+                    navigation.navigate('createdone');
                     return prev;
                 }
             });
@@ -25,11 +25,11 @@ const Creatingfarm = ({ gotoCreatingDone }: Props) => {
     }, []);
     return (
         <ScrollView style={{ height: '100%' }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
-            <View style={styles.container}>
-                <Text style={styles.createFarmText}>กำลังสร้างฟาร์ม</Text>
-                <Text style={styles.createFarmDetailText}>กรุณารอสักครู่</Text>
-                <View style={[styles.progressContainer, { width: '85%' }]}>
-                    <Text style={styles.percentText}>{Math.round(percent * 100)}%</Text>
+            <View style={styles.logincreatingfarm_styles.container}>
+                <Text style={styles.logincreatingfarm_styles.createFarmText}>กำลังสร้างฟาร์ม</Text>
+                <Text style={styles.logincreatingfarm_styles.createFarmDetailText}>กรุณารอสักครู่</Text>
+                <View style={[styles.logincreatingfarm_styles.progressContainer, { width: '85%' }]}>
+                    <Text style={styles.logincreatingfarm_styles.percentText}>{Math.round(percent * 100)}%</Text>
                     <Bar
                         progress={percent}
                         height={12}
@@ -46,40 +46,4 @@ const Creatingfarm = ({ gotoCreatingDone }: Props) => {
 
     )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 30,
-        justifyContent: 'center',
-        backgroundColor: '#fff',
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-    },
-    createFarmText: {
-        fontSize: 42,
-        fontWeight: '600',
-        color: '#000',
-        fontFamily: 'Kanit_600SemiBold',
-    },
-    createFarmDetailText: {
-        fontSize: 20,
-        color: '#2e6b50',
-        marginBottom: 15,
-        fontFamily: 'Kanit_400Regular',
-    },
-    progressContainer: {
-        alignItems: 'center',
-        gap: 8,
-        position: 'absolute',
-        bottom: 25,
-    },
-    percentText: {
-        fontSize: 16,
-        fontFamily: 'Kanit_700Bold',
-        color: '#1B4F3E',
-        marginBottom: 8,
-    },
-})
-
-export default Creatingfarm
+export default LoginCreatingFarm
