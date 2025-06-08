@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         width: '100%',
         height: '100%',
+        position: 'relative',
     },
     container_top: {
         flex: 1,
@@ -42,13 +43,15 @@ const styles = StyleSheet.create({
     input: {
         borderWidth: 1,
         borderColor: '#e6e6e6',
-        borderRadius: 4,
+        borderRadius: 6,
         padding: 12,
         marginBottom: 12,
         fontSize: 16,
         backgroundColor: '#fff',
         elevation: 1,
         fontFamily: 'Kanit_400Regular',
+        borderBottomColor: '#2e6b50',
+        borderBottomWidth: 3,
     },
     button_green: {
         backgroundColor: '#2e6b50',
@@ -218,10 +221,15 @@ const logincreatingfarm_styles = StyleSheet.create({
     createFarmText: styles.text_head1,
     createFarmDetailText: styles.text_head3,
     progressContainer: {
-        alignItems: 'center',
         gap: 8,
         position: 'absolute',
-        bottom: 45,
+        bottom: 55,
+        left: 0,
+        right: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     percentText: {
         fontSize: 16,

@@ -20,7 +20,6 @@ const LoginCreateFarm = ({ navigation }: Props) => {
 
                 <Text style={styles.logincreatefarm_styles.createFarmText}>ตั้งชื่อฟาร์ม</Text>
                 <Text style={styles.logincreatefarm_styles.createFarmDetailText}>ชื่อไม่เกิน 20 ตัวอักษร</Text>
-                <br />
                 <TextInput
                     style={styles.logincreatefarm_styles.input}
                     placeholder="ชื่อฟาร์มของคุณ"

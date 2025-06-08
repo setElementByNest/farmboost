@@ -13,6 +13,7 @@ import LoginCreateFarm from './page/login/LoginCreateFarm';
 import LoginCreatingFarm from './page/login/LoginCreatingFarm';
 import LoginCreateDone from './page/login/LoginCreateDone';
 import LoginNewUser from './page/login/LoginNewUser';
+import Home from './page/home/Home';
 
 export type RootStackParamList = {
   loginmain: undefined;
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   creatingfarm: undefined;
   createdone: undefined;
   newuser: undefined;
+  home: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -47,12 +49,15 @@ export default function App() {
     <SettingContext.Provider value={{ nowSetting, setNowSetting, changeLang }}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="loginmain" screenOptions={{ headerShown: false }}>
+          {/* Login Screen */}
           <Stack.Screen name="loginmain" component={LoginMain} />
           <Stack.Screen name="selectFarm" component={LoginSelect} />
           <Stack.Screen name="createfarm" component={LoginCreateFarm} />
           <Stack.Screen name="creatingfarm" component={LoginCreatingFarm} />
           <Stack.Screen name="createdone" component={LoginCreateDone} />
           <Stack.Screen name="newuser" component={LoginNewUser} />
+          {/* Home Screen */}
+          <Stack.Screen name="home" component={Home} />
         </Stack.Navigator>
       </NavigationContainer>
     </SettingContext.Provider>

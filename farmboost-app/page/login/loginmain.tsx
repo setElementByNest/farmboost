@@ -62,7 +62,6 @@ const LoginMain = ({ navigation }: Props) => {
         onChangeText={setPassword}
       />
       <Text style={styles.loginmain_styles.noticText}>{notic}</Text>
-      <br />
 
       <TouchableOpacity style={styles.loginmain_styles.loginButton} onPress={onPressNextgotoSelectFarm}>
         <Text style={styles.loginmain_styles.loginButton_text}>
@@ -92,6 +91,12 @@ const LoginMain = ({ navigation }: Props) => {
       <TouchableOpacity style={styles.loginmain_styles.gearIcon} onPress={() => setShowSettings(true)}>
         <MaterialCommunityIcons name="cog-outline" size={30} color="#999" />
       </TouchableOpacity>
+
+      <View style={{ position: 'absolute', top: 0, right: 0, height: '50%', width: '50%', filter: 'blur(70px)', zIndex: -1 }}>
+        <View style={{backgroundColor: 'green', width: '50%', aspectRatio: 1, position: 'absolute', top: '-15%', right: 30}}></View>
+        <View style={{backgroundColor: 'yellow', width: '30%', aspectRatio: 1, position: 'absolute', top: '30%', right: 5}}></View>
+      </View>
+
       <SettingsModal isVisible={showSettings} onClose={() => setShowSettings(false)} />
     </View>
   );

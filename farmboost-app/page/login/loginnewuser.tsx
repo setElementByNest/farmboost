@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
@@ -42,7 +42,6 @@ const LoginNewUser = ({ navigation }: Props) => {
 
         <Text style={styles.loginnewuser_styles.text_head1}>สวัสดีผู้ใช้งานใหม่</Text>
         <Text style={styles.loginnewuser_styles.text_head2}>ลงทะเบียน</Text>
-        <br />
 
         <TextInput
           style={styles.loginnewuser_styles.input}

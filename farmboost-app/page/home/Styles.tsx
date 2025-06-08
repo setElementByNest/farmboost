@@ -1,0 +1,210 @@
+import { StyleSheet } from 'react-native';
+import { Color } from '../../components/Colors';
+
+const styles = StyleSheet.create({
+    container_center: {
+        flex: 1,
+        padding: 30,
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+    },
+    container_top: {
+        flex: 1,
+        padding: 30,
+        backgroundColor: '#fff',
+        width: '100%',
+        height: '100%',
+        paddingTop: 60,
+        justifyContent: 'flex-start',
+    },
+    text_head1: {
+        fontSize: 42,
+        color: Color.text1,
+        fontFamily: 'Kanit_600SemiBold',
+    },
+    text_head2: {
+        fontSize: 24,
+        color: Color.text1,
+        fontFamily: 'Kanit_400Regular',
+    },
+    text_head3: {
+        fontSize: 20,
+        color: Color.text3,
+        marginVertical: 15,
+        fontFamily: 'Kanit_400Regular',
+    },
+    text_head3_white: {
+        color: '#fff',
+        fontSize: 16,
+        fontFamily: 'Kanit_400Regular',
+    },
+    text_head4: {
+        fontSize: 18,
+        color: Color.text1,
+        fontFamily: 'Kanit_400Regular',
+    },
+    text_head4_gray: {
+        fontSize: 18,
+        color: Color.text4,
+        fontFamily: 'Kanit_400Regular',
+    },
+    text_head5_red: {
+        color: '#c44',
+        fontSize: 16,
+        fontFamily: 'Kanit_400Regular',
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#e6e6e6',
+        borderRadius: 6,
+        padding: 12,
+        marginBottom: 12,
+        fontSize: 16,
+        backgroundColor: '#fff',
+        elevation: 1,
+        fontFamily: 'Kanit_400Regular',
+        borderBottomColor: '#2e6b50',
+        borderBottomWidth: 3,
+    },
+    button_green: {
+        backgroundColor: '#2e6b50',
+        paddingVertical: 14,
+        borderRadius: 4,
+        alignItems: 'center',
+        marginBottom: 15,
+    },
+    button_green_text: {
+        color: '#fff',
+        fontSize: 16,
+        fontFamily: 'Kanit_400Regular',
+    },
+    button_white: {
+        backgroundColor: '#fff',
+        borderRadius: 4,
+        borderColor: '#ddd',
+        borderWidth: 1,
+        paddingVertical: 12,
+        alignItems: 'center',
+        marginBottom: 20,
+    },
+    button_gray: {
+        backgroundColor: '#eaeaea',
+        paddingVertical: 14,
+        borderRadius: 4,
+        alignItems: 'center',
+    },
+    button_gray_text: {
+        color: '#888',
+        fontSize: 16,
+        fontFamily: 'Kanit_400Regular',
+    },
+    nextIcon: {
+        position: 'absolute',
+        bottom: 25,
+        right: 25,
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+    nextIcon_Text: {
+        fontSize: 24,
+        color: '#000',
+        fontFamily: 'Kanit_400Regular',
+        marginRight: 10,
+    },
+})
+
+const home_styles = StyleSheet.create({
+    container: styles.container_top,
+    text_head1: styles.text_head1,
+    text_head3: styles.text_head3,
+    text_head4: styles.text_head4,
+    text_head4_gray: styles.text_head4_gray,
+    calendar: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'stretch',
+        marginBottom: 20,
+    },
+    calendar_head: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 5,
+    },
+    listItem: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10,
+    },
+    listItemText: styles.text_head2,
+    listIconDone: {
+        color: 'green',
+        fontSize: 25,
+    },
+    listIconNot: {
+        color: 'red',
+        fontSize: 25,
+    },
+    listIconNow: {
+        color: '#999',
+        fontSize: 20,
+        paddingBottom: 2,
+    }
+});
+
+const cardtodo_styles = StyleSheet.create({
+    card: {
+        marginVertical: 2,
+        padding: 16,
+        borderRadius: 10,
+        backgroundColor: '#fff',
+        elevation: 3,
+        borderBottomWidth: 4,
+        borderBottomColor: '#0f5132',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 4,
+    },
+    title: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#0f5132',
+        marginBottom: 10,
+    },
+    taskRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 2,
+    },
+    taskText: {
+        fontSize: 16,
+        fontFamily: 'Kanit_400Regular',
+    },
+    completed: {
+        textDecorationLine: 'line-through',
+        color: '#555',
+    },
+    divider: {
+        height: 1,
+        backgroundColor: '#ccc',
+        marginVertical: 10,
+    },
+    bottomRightIcon: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: Color.main,
+        padding: 10,
+        borderRadius: 50,
+    },
+});
+
+export default { home_styles, cardtodo_styles };

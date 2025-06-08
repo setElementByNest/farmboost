@@ -14,7 +14,7 @@ const LoginCreateDone = ({ navigation }: Props) => {
 
                 <Text style={styles.logincreatedone_styles.createFarmText}>สร้างฟาร์มเสร็จสิ้น</Text>
                 <Text style={styles.logincreatedone_styles.createFarmDetailText}>กดปุ่มเริ่มใช้งาน</Text>
-                <TouchableOpacity style={styles.logincreatedone_styles.nextIcon} onPress={() => navigation.navigate('loginmain')}>
+                <TouchableOpacity style={styles.logincreatedone_styles.nextIcon} onPress={() => navigation.navigate('home')}>
                     <Text style={[styles.logincreatedone_styles.nextIconText, { color: "#2e6b50" }]}>เริ่มใช้งาน</Text>
                     <MaterialCommunityIcons name="arrow-right-circle" size={80} color={"#2e6b50"} />
                 </TouchableOpacity>
