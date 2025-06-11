@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     },
 })
 
-const home_styles = StyleSheet.create({
+const livestock_styles = StyleSheet.create({
     container: styles.container_top,
     header: {
         display: 'flex',
@@ -246,4 +246,4 @@ const cardtodo_styles = StyleSheet.create({
     },
 });
 
-export default { home_styles, cardtodo_styles };
+export default { livestock_styles, cardtodo_styles };

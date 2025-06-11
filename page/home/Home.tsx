@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from 'react-native'
+import { View, Text, Pressable, Image, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
@@ -9,6 +9,7 @@ import { Checkbox } from 'react-native-paper';
 import { Color } from '../../components/Colors';
 import { t } from 'i18next';
 import SummaryCard from '../../components/summaryCard/SummaryCard';
+import BottomNav from '../../components/nav/BottomNav';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'home'>;
 
@@ -46,6 +47,9 @@ const task2: TaskProps[] = [
     { id: '1', title: 'ฉีดยาควาย 5 ตัว', completed: false },
     { id: '2', title: 'ชั่งน้ำหนักควาย 2 ตัว', completed: true },
 ];
+const task3: TaskProps[] = [
+    { id: '1', title: 'ฉีดยาควาย 5 ตัว', completed: false },
+];
 const taskGroup = [
     {
         day: '11',
@@ -65,15 +69,15 @@ const taskGroup = [
     },
     {
         day: '15',
-        tasks: task2
+        tasks: task3
     },
     {
         day: '16',
-        tasks: task1
+        tasks: []
     },
     {
         day: '17',
-        tasks: task2
+        tasks: []
     },
 ]
 
@@ -115,68 +119,101 @@ const Home = ({ navigation }: Props) => {
     }, []);
 
     return (
-        <View style={styles.home_styles.container}>
-            <Text style={styles.home_styles.text_head1}>Murrah Farm</Text>
-            <Text style={styles.home_styles.text_head3}>รายการที่ต้องทำ</Text>
-            <View>
-                <View style={styles.home_styles.calendar_head}>
-                    <Text style={styles.home_styles.text_head4}>June</Text>
-                    <Pressable><Text style={styles.home_styles.text_head4_gray}>ดูทั้งหมด</Text></Pressable>
-                </View>
-                <View style={styles.home_styles.calendar}>
-                    {
-                        listDay.map((item, index) => (
-                            <Pressable key={index} style={[styles.home_styles.listItem, { opacity: (item.day === selectDay ? 1 : 0.2) }]} onPress={() => onPressSelectDay(item.day)}>
-                                <Text style={styles.home_styles.listItemText}>{item.day}</Text>
-                                {
-                                    iconStatus(item.status)
-                                }
-
-                            </Pressable>
-                        ))
-                    }
-                </View>
-                <View style={styles.cardtodo_styles.card}>
-                    {tasks.map((task) => (
-                        <View
-                            key={task.id}
-                            style={[
-                                styles.cardtodo_styles.taskRow
-                            ]}
-                        >
-                            <Checkbox
-                                status={task.completed ? 'checked' : 'unchecked'}
-                                onPress={() => toggleTask(task.id)}
-                                color={Color.main}
-                            />
-                            <Text style={[styles.cardtodo_styles.taskText, task.completed && styles.cardtodo_styles.completed]}>
-                                {task.title}
-                            </Text>
+        <View style={{width: '100%', height: '100%', position: 'relative', justifyContent: 'flex-start', alignItems: 'center'}}>
+            <ScrollView style={{ width: '100%', height: '100%', position: 'relative' }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+                <View style={styles.home_styles.container}>
+                    <View style={styles.home_styles.header}>
+                        <Text style={styles.home_styles.text_head1}>Murrah Farm</Text>
+                        <Image
+                            source={require('../../assets/buff2.png')}
+                            style={styles.home_styles.headerImage}
+                        />
+                    </View>
+                    <View>
+                        <View style={styles.home_styles.calendar_head}>
+                            <Text style={styles.home_styles.text_head4}>June</Text>
+                            <Pressable><Text style={styles.home_styles.text_head4_gray}>ดูทั้งหมด</Text></Pressable>
                         </View>
-                    ))}
-                    <Pressable style={styles.cardtodo_styles.bottomRightIcon}>
-                        <MaterialCommunityIcons name="format-list-bulleted" size={20} color="white" />
-                    </Pressable>
+                        <View style={styles.home_styles.calendar}>
+                            {
+                                listDay.map((item, index) => (
+                                    <Pressable key={index} style={[styles.home_styles.listItem, { opacity: (item.day === selectDay ? 1 : 0.2) }]} onPress={() => onPressSelectDay(item.day)}>
+                                        <Text style={styles.home_styles.listItemText}>{item.day}</Text>
+                                        {
+                                            iconStatus(item.status)
+                                        }
+
+                                    </Pressable>
+                                ))
+                            }
+                        </View>
+                        <Text style={styles.home_styles.text_head4}>รายการที่ต้องทำ</Text>
+                        <View style={styles.cardtodo_styles.card}>
+                            {tasks.map((task) => (
+                                <View
+                                    key={task.id}
+                                    style={[
+                                        styles.cardtodo_styles.taskRow
+                                    ]}
+                                >
+                                    <Checkbox
+                                        status={task.completed ? 'checked' : 'unchecked'}
+                                        onPress={() => toggleTask(task.id)}
+                                        color={Color.main}
+                                    />
+                                    <Text style={[styles.cardtodo_styles.taskText, task.completed && styles.cardtodo_styles.completed]}>
+                                        {task.title}
+                                    </Text>
+                                </View>
+                            ))}
+                            {
+                                tasks.length === 0 && (
+                                    <Text style={[styles.cardtodo_styles.taskText, { opacity: 0.5, textAlign: 'center' }]}>ไม่มีรายการที่ต้องทำ</Text>
+                                )
+                            }
+                            <Pressable style={styles.cardtodo_styles.bottomRightIcon}>
+                                <MaterialCommunityIcons name="format-list-bulleted" size={20} color="white" />
+                            </Pressable>
+                        </View>
+                    </View>
+                    <Text style={styles.home_styles.text_head3}>รายงานผลแบบย่อ</Text>
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
+                        <SummaryCard
+                            title="การเติบโต"
+                            icon="paw"
+                            abnormalLabel="ช้ากว่าปกติ"
+                            abnormalCount={0}
+                            normalCount={0}
+                            fastCount={0}
+                        />
+                        <SummaryCard
+                            title="สุขภาพ"
+                            icon="head-heart"
+                            abnormalLabel="ผิดปกติ"
+                            abnormalCount={0}
+                            normalCount={0}
+                        />
+                    </View>
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
+                        <SummaryCard
+                            title="การเติบโต"
+                            icon="paw"
+                            abnormalLabel="ช้ากว่าปกติ"
+                            abnormalCount={0}
+                            normalCount={0}
+                            fastCount={0}
+                        />
+                        <SummaryCard
+                            title="สุขภาพ"
+                            icon="head-heart"
+                            abnormalLabel="ผิดปกติ"
+                            abnormalCount={0}
+                            normalCount={0}
+                        />
+                    </View>
                 </View>
-            </View>
-            <Text style={styles.home_styles.text_head3}>รายงานผลแบบย่อ</Text>
-            <View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10}}>
-                <SummaryCard
-                    title="การเติบโต"
-                    icon="paw"
-                    abnormalLabel="ช้ากว่าปกติ"
-                    abnormalCount={0}
-                    normalCount={0}
-                    fastCount={0}
-                />
-                <SummaryCard
-                    title="สุขภาพ"
-                    icon="head-heart"
-                    abnormalLabel="ผิดปกติ"
-                    abnormalCount={0}
-                    normalCount={0}
-                />
-            </View>
+            </ScrollView>
+            <BottomNav navigation={navigation} nowpage='home'/>
         </View>
     )
 }

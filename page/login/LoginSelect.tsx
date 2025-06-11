@@ -29,6 +29,11 @@ const LoginSelect = ({ navigation }: Props) => {
     const handleSelectFarm = (id: number) => {
         setSelected(id);
     };
+    const onPressNext = () => {
+        if (selected !== null) {
+            navigation.navigate('home')
+        }
+    }
     return (
         <ScrollView style={{ height: '100%' }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
             <View style={styles.loginselect_styles.container}>
@@ -61,7 +66,7 @@ const LoginSelect = ({ navigation }: Props) => {
                         <Text></Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.loginselect_styles.nextIcon}>
+                <TouchableOpacity style={styles.loginselect_styles.nextIcon} onPress={onPressNext}>
                     <Text style={[styles.loginselect_styles.nextIconText, { color: selected !== null ? "#2e6b50" : "#ccc" }]}>เริ่มใช้งาน</Text>
                     <MaterialCommunityIcons name="arrow-right-circle" size={80} color={selected !== null ? "#2e6b50" : "#ccc"} />
                 </TouchableOpacity>
