@@ -15,6 +15,7 @@ import LoginCreateDone from './page/login/LoginCreateDone';
 import LoginNewUser from './page/login/LoginNewUser';
 import Home from './page/home/Home';
 import Livestock from './page/livestock/Livestock';
+import Loading from './components/loading/Loading';
 
 export type RootStackParamList = {
   loginmain: undefined;
@@ -24,6 +25,8 @@ export type RootStackParamList = {
   createdone: undefined;
   newuser: undefined;
   home: undefined;
+  livestock: undefined;
+  loading: undefined
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -49,7 +52,7 @@ export default function App() {
   return (
     <SettingContext.Provider value={{ nowSetting, setNowSetting, changeLang }}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="livestock" screenOptions={{ headerShown: false }}>
+        <Stack.Navigator initialRouteName="livestock" screenOptions={{ headerShown: false, animation: 'none' }}>
           {/* Login Screen */}
           <Stack.Screen name="loginmain" component={LoginMain} />
           <Stack.Screen name="selectFarm" component={LoginSelect} />
@@ -59,7 +62,8 @@ export default function App() {
           <Stack.Screen name="newuser" component={LoginNewUser} />
           {/* Home Screen */}
           <Stack.Screen name="home" component={Home} />
-          <Stack.Screen name="livestock" component={Livestock} />
+          <Stack.Screen name="livestock" component={Livestock}/>
+          <Stack.Screen name="loading" component={Loading} options={{ animation: 'slide_from_right' }} />
         </Stack.Navigator>
       </NavigationContainer>
     </SettingContext.Provider>

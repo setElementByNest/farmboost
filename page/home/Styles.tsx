@@ -137,6 +137,8 @@ const home_styles = StyleSheet.create({
         height: 140,
         paddingTop: 60,
         paddingHorizontal: 30,
+        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 20,
     },
     
     headerImage: {
@@ -224,7 +226,7 @@ const cardtodo_styles = StyleSheet.create({
         marginBottom: 2,
     },
     taskText: {
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: 'Kanit_400Regular',
     },
     completed: {

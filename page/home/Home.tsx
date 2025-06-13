@@ -177,38 +177,24 @@ const Home = ({ navigation }: Props) => {
                         </View>
                     </View>
                     <Text style={styles.home_styles.text_head3}>รายงานผลแบบย่อ</Text>
-                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap' }}>
+                        <SummaryCard
+                            title="การติดสัด"
+                            icon="cards-heart"
+                            abnormalLabel="โอกาส 80%"
+                            abnormalCount={2}
+                        />
+                        <SummaryCard
+                            title="สุขภาพ"
+                            icon="stethoscope"
+                            abnormalLabel="ผิดปกติ"
+                            abnormalCount={0}
+                        />
                         <SummaryCard
                             title="การเติบโต"
                             icon="paw"
                             abnormalLabel="ช้ากว่าปกติ"
                             abnormalCount={0}
-                            normalCount={0}
-                            fastCount={0}
-                        />
-                        <SummaryCard
-                            title="สุขภาพ"
-                            icon="head-heart"
-                            abnormalLabel="ผิดปกติ"
-                            abnormalCount={0}
-                            normalCount={0}
-                        />
-                    </View>
-                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', gap: 10 }}>
-                        <SummaryCard
-                            title="การเติบโต"
-                            icon="paw"
-                            abnormalLabel="ช้ากว่าปกติ"
-                            abnormalCount={0}
-                            normalCount={0}
-                            fastCount={0}
-                        />
-                        <SummaryCard
-                            title="สุขภาพ"
-                            icon="head-heart"
-                            abnormalLabel="ผิดปกติ"
-                            abnormalCount={0}
-                            normalCount={0}
                         />
                     </View>
                 </View>

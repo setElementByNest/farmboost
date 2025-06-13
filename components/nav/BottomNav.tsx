@@ -12,7 +12,7 @@ type TabItem = {
 const tabs: TabItem[] = [
     { name: 'home', label: 'หน้าแรก', icon: 'home', isActive: true },
     { name: 'livestock', label: 'ข้อมูลสัตว์', icon: 'book-open', isActive: false },
-    { name: 'Add', label: 'เพิ่มสัตว์', icon: 'plus-circle', isActive: false },
+    // { name: 'Add', label: 'เพิ่มสัตว์', icon: 'plus-circle', isActive: false },
     { name: 'Alert', label: 'แจ้งเตือน', icon: 'bell', isActive: false },
     { name: 'Settings', label: 'ตั้งค่า', icon: 'cog-outline', isActive: false },
 ];

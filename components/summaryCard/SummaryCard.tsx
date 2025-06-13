@@ -1,54 +1,37 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type SummaryCardProps = {
     title: string;
     icon: keyof typeof MaterialCommunityIcons.glyphMap;
     abnormalLabel: string;
-    normalCount: number;
     abnormalCount: number;
-    fastCount?: number;
 };
 
 const SummaryCard: React.FC<SummaryCardProps> = ({
     title,
     icon,
     abnormalLabel,
-    normalCount,
     abnormalCount,
-    fastCount,
 }) => {
     return (
-        <View style={styles.card}>
+        <Pressable style={[styles.card, { borderBottomColor: abnormalCount > 0 ? '#c44' : '#0f5132' }]}>
             <View style={styles.headerRow}>
-                <Text style={styles.title}>{title}</Text>
-                <MaterialCommunityIcons name={icon} size={24} color="#0f5132" />
+                <Text style={[styles.title, { color: abnormalCount > 0 ? "#c44" : "#0f5132" }]}>{title}</Text>
+                <MaterialCommunityIcons name={icon} size={36} color={abnormalCount > 0 ? "#c44" : "#0f5132"} />
             </View>
 
             <Text style={styles.subLabel}>{abnormalLabel}</Text>
-            <Text style={styles.mainCount}>
+            <Text style={[styles.mainCount, { color: abnormalCount > 0 ? '#c44' : '#000' }]}>
                 {abnormalCount} <Text style={styles.unit}>ตัว</Text>
             </Text>
-
-            <View style={styles.footerRow}>
-                <Text style={styles.footerText}>ปกติ</Text>
-                <Text style={styles.footerText}>{normalCount} ตัว</Text>
-            </View>
-
-            {typeof fastCount === 'number' && (
-                <View style={styles.footerRow}>
-                    <Text style={styles.footerText}>เร็วกว่าปกติ</Text>
-                    <Text style={styles.footerText}>{fastCount} ตัว</Text>
-                </View>
-            )}
-        </View>
+        </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
     card: {
-        flex: 1,
         backgroundColor: '#fff',
         borderRadius: 12,
         padding: 16,
@@ -59,7 +42,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 4,
-        marginVertical: 8,
+        marginVertical: 2,
+        width: '48%',
     },
     headerRow: {
         flexDirection: 'row',
@@ -67,25 +51,26 @@ const styles = StyleSheet.create({
         marginBottom: 6,
     },
     title: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold',
         color: '#0f5132',
         fontFamily: 'Kanit_400Regular',
     },
     subLabel: {
-        fontSize: 14,
+        fontSize: 18,
         color: '#000',
         marginBottom: 4,
         fontFamily: 'Kanit_400Regular',
     },
     mainCount: {
-        fontSize: 28,
+        fontSize: 32,
         fontWeight: 'bold',
         color: '#000',
         fontFamily: 'Kanit_400Regular',
+        textAlign: 'center',
     },
     unit: {
-        fontSize: 18,
+        fontSize: 24,
         fontWeight: 'normal',
         fontFamily: 'Kanit_400Regular',
     },
@@ -95,7 +80,7 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
     footerText: {
-        fontSize: 14,
+        fontSize: 18,
         color: '#000',
         fontFamily: 'Kanit_400Regular',
     },

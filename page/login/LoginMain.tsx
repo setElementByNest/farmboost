@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../App';
 import styles from './Styles';
+import Button from '../../components/button/Button';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'loginmain'>;
 
@@ -62,39 +63,23 @@ const LoginMain = ({ navigation }: Props) => {
         onChangeText={setPassword}
       />
       <Text style={styles.loginmain_styles.noticText}>{notic}</Text>
-
-      <TouchableOpacity style={styles.loginmain_styles.loginButton} onPress={onPressNextgotoSelectFarm}>
-        <Text style={styles.loginmain_styles.loginButton_text}>
-          {t('login.login_button1')}
-        </Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.loginmain_styles.googleButton} onPress={handleGoogleLogin}>
-        <View style={styles.loginmain_styles.googleContent}>
-          <MaterialCommunityIcons style={styles.loginmain_styles.googleIcon} name="google" size={30} color="#999" />
-          <Text style={styles.loginmain_styles.googleText}>{t('login.login_button2')}</Text>
-        </View>
-      </TouchableOpacity>
+      <Button text={t('login.login_button1')} theme='green' fn={onPressNextgotoSelectFarm} />
+      <Button text={t('login.login_button2')} theme='white' fn={handleGoogleLogin} />
 
       <View style={styles.loginmain_styles.separatorContainer}>
         <View style={styles.loginmain_styles.separatorLine} />
         <Text style={styles.loginmain_styles.separatorText}>{t('login.login_line1')}</Text>
         <View style={styles.loginmain_styles.separatorLine} />
       </View>
-
-      <TouchableOpacity style={styles.loginmain_styles.registerButton} onPress={() => navigation.navigate('newuser')}>
-        <Text style={styles.loginmain_styles.registerButton_text}>
-          {t('login.login_button3')}
-        </Text>
-      </TouchableOpacity>
+      <Button text={t('login.login_button3')} theme='gray' fn={() => navigation.navigate('newuser')} />
 
       <TouchableOpacity style={styles.loginmain_styles.gearIcon} onPress={() => setShowSettings(true)}>
         <MaterialCommunityIcons name="cog-outline" size={30} color="#999" />
       </TouchableOpacity>
 
       <View style={{ position: 'absolute', top: 0, right: 0, height: '50%', width: '50%', filter: 'blur(70px)', zIndex: -1 }}>
-        <View style={{backgroundColor: 'green', width: '50%', aspectRatio: 1, position: 'absolute', top: '-15%', right: 30}}></View>
-        <View style={{backgroundColor: 'yellow', width: '30%', aspectRatio: 1, position: 'absolute', top: '30%', right: 5}}></View>
+        <View style={{ backgroundColor: 'green', width: '50%', aspectRatio: 1, position: 'absolute', top: '-15%', right: 30 }}></View>
+        <View style={{ backgroundColor: 'yellow', width: '30%', aspectRatio: 1, position: 'absolute', top: '30%', right: 5 }}></View>
       </View>
 
       <SettingsModal isVisible={showSettings} onClose={() => setShowSettings(false)} />

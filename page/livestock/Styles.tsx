@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
         fontFamily: 'Kanit_400Regular',
     },
     text_head3: {
-        fontSize: 20,
+        fontSize: 18,
         color: Color.text3,
-        marginTop: 16,
-        marginBottom: 6,
+        margin: 0,
+        padding: 0,
         fontFamily: 'Kanit_400Regular',
     },
     text_head3_white: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         borderColor: '#e6e6e6',
         borderRadius: 6,
         padding: 12,
-        marginBottom: 12,
+        marginBottom: 4,
         fontSize: 16,
         backgroundColor: '#fff',
         elevation: 1,
@@ -137,8 +137,10 @@ const livestock_styles = StyleSheet.create({
         height: 140,
         paddingTop: 60,
         paddingHorizontal: 30,
+        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 20,
     },
-    
+
     headerImage: {
         width: '20%',
         height: '70%',
@@ -194,56 +196,81 @@ const livestock_styles = StyleSheet.create({
         color: '#999',
         fontSize: 20,
         paddingBottom: 2,
-    }
-});
-
-const cardtodo_styles = StyleSheet.create({
-    card: {
-        marginTop: 2,
-        marginBottom: 12,
-        padding: 16,
-        borderRadius: 10,
-        backgroundColor: '#fff',
-        elevation: 3,
-        borderBottomWidth: 4,
-        borderBottomColor: '#0f5132',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 4,
     },
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#0f5132',
-        marginBottom: 10,
-    },
-    taskRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 2,
-    },
-    taskText: {
-        fontSize: 16,
-        fontFamily: 'Kanit_400Regular',
-    },
-    completed: {
-        textDecorationLine: 'line-through',
-        color: '#555',
-    },
-    divider: {
-        height: 1,
-        backgroundColor: '#ccc',
-        marginVertical: 10,
-    },
-    bottomRightIcon: {
+    plusIcon: {
         position: 'absolute',
-        bottom: 20,
+        bottom: 110,
         right: 20,
-        backgroundColor: Color.main,
         padding: 10,
         borderRadius: 50,
+        backgroundColor: '#2e6b50'
     },
 });
 
-export default { livestock_styles, cardtodo_styles };
+const addmodal_styles = StyleSheet.create({
+    modal: {
+        justifyContent: 'flex-end',
+        margin: 0,
+    },
+    container: {
+        backgroundColor: 'white',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 30,
+        paddingBottom: 42,
+    },
+    title: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        fontFamily: 'Kanit',
+        marginBottom: 16,
+    },
+    label: {
+        fontSize: 16,
+        fontFamily: 'Kanit',
+        marginTop: 12,
+    },
+    buttonRow: {
+        flexDirection: 'row',
+        gap: 8,
+    },
+    buttonRow_text_active: {
+        fontSize: 16,
+        color: '#fff',
+    },
+    buttonRow_text_inactive: {
+        fontSize: 16,
+        color: '#1c4c3f',
+    },
+    activeButton: {
+        backgroundColor: '#1c4c3f',
+        padding: 14,
+        borderRadius: 6,
+    },
+    inactiveButton: {
+        backgroundColor: '#eee',
+        padding: 14,
+        borderRadius: 6,
+    },
+    buttonText: {
+        color: 'white',
+        fontFamily: 'Kanit',
+    },
+    input: styles.input,
+    confirmButton: {
+        backgroundColor: '#1c4c3f',
+        borderRadius: 8,
+        padding: 12,
+        alignItems: 'center',
+        marginTop: 24,
+    },
+    confirmText: {
+        color: 'white',
+        fontSize: 16,
+        fontFamily: 'Kanit',
+    },
+    addButton: styles.button_green,
+    addButton_text: styles.button_green_text,
+});
+
+export default { livestock_styles, addmodal_styles };
