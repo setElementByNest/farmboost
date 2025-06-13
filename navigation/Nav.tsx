@@ -39,13 +39,13 @@ const Nav = () => {
           <Tab.Screen name="livestock" component={Livestock} />
           <Tab.Screen name="notice" component={Notice} />
           <Tab.Screen name="setting" component={Setting} />
-          {/* <Tab.Screen name="loginmain" component={LoginMain} />
+          <Tab.Screen name="loginmain" component={LoginMain} />
           <Tab.Screen name="selectFarm" component={LoginSelect} />
           <Tab.Screen name="createfarm" component={LoginCreateFarm} />
           <Tab.Screen name="creatingfarm" component={LoginCreatingFarm} />
           <Tab.Screen name="createdone" component={LoginCreateDone} />
           <Tab.Screen name="newuser" component={LoginNewUser} />
-          <Tab.Screen name="loading" component={Loading} /> */}
+          <Tab.Screen name="loading" component={Loading} />
         </Tab.Navigator>
       </NavigationContainer>
   )
