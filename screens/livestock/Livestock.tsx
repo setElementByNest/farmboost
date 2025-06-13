@@ -3,17 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles'
 import { Checkbox } from 'react-native-paper';
 import { Color } from '../../components/Colors';
 import { t } from 'i18next';
 import SummaryCard from '../../components/summaryCard/SummaryCard';
-import BottomNav from '../../components/nav/BottomNav';
 import AnimalCardList from '../../components/petCard/Petcard';
 import AddModal from './AddModal';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'livestock'>;
+type Props = NativeStackScreenProps<NavListProps, 'livestock'>;
 
 type TaskProps = {
     id: string;
@@ -97,14 +96,8 @@ const Livestock = ({ navigation }: Props) => {
         <View style={{ width: '100%', height: '100%', position: 'relative', justifyContent: 'flex-start', alignItems: 'center' }}>
             <ScrollView style={{ width: '100%', height: '100%', position: 'relative' }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.livestock_styles.container}>
-                    <View style={styles.livestock_styles.header}>
-                        <Text style={styles.livestock_styles.text_head1}>ข้อมูลปศุสัตว์</Text>
-                        <Image
-                            source={require('../../assets/buff2.png')}
-                            style={styles.livestock_styles.headerImage}
-                        />
-                    </View>
-                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', gap: 6 }}>
+                    <Text style={styles.livestock_styles.text_head1}>ข้อมูลปศุสัตว์</Text>
+                    <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', gap: 6, marginTop: 20 }}>
                         {
                             filter.map((item) => (
                                 <Pressable key={item.id} onPress={() => setNowFilter(Number(item.id))} >
@@ -131,13 +124,12 @@ const Livestock = ({ navigation }: Props) => {
                         }
                     </View>
                 </View>
-            </ScrollView>
+            </ScrollView >
             <Pressable onPress={() => setShowAdd(true)} style={styles.livestock_styles.plusIcon}>
                 <MaterialCommunityIcons name="plus" size={32} color={'white'} />
             </Pressable>
-            <BottomNav navigation={navigation} nowpage='livestock' />
             <AddModal isVisible={showAdd} onClose={closeModal} />
-        </View>
+        </View >
     )
 }
 

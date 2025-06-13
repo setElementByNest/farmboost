@@ -1,17 +1,16 @@
 import { View, Text, Pressable, Image, ScrollView } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles'
 import { Checkbox } from 'react-native-paper';
 import { Color } from '../../components/Colors';
 import { t } from 'i18next';
 import SummaryCard from '../../components/summaryCard/SummaryCard';
-import BottomNav from '../../components/nav/BottomNav';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'home'>;
+type Props = NativeStackScreenProps<NavListProps, 'home'>;
 
 type ListDayProps = {
     day: string;
@@ -87,6 +86,12 @@ const Home = ({ navigation }: Props) => {
     const [selectDay, setSelectDay] = useState<string>(ListDay[3].day);
     const { t } = useTranslation();
 
+    // const { setNowPage } = useContext(FarmboostContext);
+    
+    // useEffect(() => {
+    //     setNowPage('home');
+    // }, []);
+
     const iconStatus = (status: string) => {
         switch (status) {
             case 'done':
@@ -119,7 +124,7 @@ const Home = ({ navigation }: Props) => {
     }, []);
 
     return (
-        <View style={{width: '100%', height: '100%', position: 'relative', justifyContent: 'flex-start', alignItems: 'center'}}>
+        <View style={{ width: '100%', height: '100%', position: 'relative', justifyContent: 'flex-start', alignItems: 'center' }}>
             <ScrollView style={{ width: '100%', height: '100%', position: 'relative' }} contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
                 <View style={styles.home_styles.container}>
                     <View style={styles.home_styles.header}>
@@ -199,7 +204,6 @@ const Home = ({ navigation }: Props) => {
                     </View>
                 </View>
             </ScrollView>
-            <BottomNav navigation={navigation} nowpage='home'/>
         </View>
     )
 }

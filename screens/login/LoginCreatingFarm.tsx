@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { Bar } from 'react-native-progress';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'creatingfarm'>;
+type Props = NativeStackScreenProps<NavListProps, 'creatingfarm'>;
 
 const LoginCreatingFarm = ({ navigation }: Props) => {
     const [percent, setPercent] = useState<number>(0);

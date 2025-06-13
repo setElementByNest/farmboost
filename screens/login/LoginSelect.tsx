@@ -2,10 +2,10 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useState } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'selectFarm'>;
+type Props = NativeStackScreenProps<NavListProps, 'selectFarm'>;
 
 const LoginSelect = ({ navigation }: Props) => {
     const [selected, setSelected] = useState<number | null>(null);
@@ -31,7 +31,7 @@ const LoginSelect = ({ navigation }: Props) => {
     };
     const onPressNext = () => {
         if (selected !== null) {
-            navigation.navigate('home')
+            navigation.navigate('loading')
         }
     }
     return (

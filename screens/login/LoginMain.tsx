@@ -4,11 +4,11 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import SettingsModal from './SettingsModal';
 import { useTranslation } from 'react-i18next';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles';
 import Button from '../../components/button/Button';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'loginmain'>;
+type Props = NativeStackScreenProps<NavListProps, 'loginmain'>;
 
 const LoginMain = ({ navigation }: Props) => {
   const [username, setUsername] = useState<string>('');
@@ -19,17 +19,9 @@ const LoginMain = ({ navigation }: Props) => {
 
   const { t } = useTranslation();
 
-  // const handleLogin = () => {
-  //   console.log(username, password);
-  // };
-
   const handleGoogleLogin = () => {
     console.log('Login with Google');
   };
-
-  // const handleRegister = () => {
-  //   console.log('Go to Register');
-  // };
 
   const onPressNextgotoSelectFarm = () => {
     console.log((username !== ''), (password !== ''));

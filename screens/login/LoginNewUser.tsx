@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'newuser'>;
+type Props = NativeStackScreenProps<NavListProps, 'newuser'>;
 
 const LoginNewUser = ({ navigation }: Props) => {
   const [username, setUsername] = useState<string>('');

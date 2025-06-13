@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { View, Text, TouchableOpacity, ScrollView, TextInput } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../App';
 import styles from './Styles';
+import { NavListProps } from '../../navigation/Nav';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'createfarm'>;
+type Props = NativeStackScreenProps<NavListProps, 'createfarm'>;
 
 const LoginCreateFarm = ({ navigation }: Props) => {
     const [farmName, setFarmName] = useState<string | null>(null);

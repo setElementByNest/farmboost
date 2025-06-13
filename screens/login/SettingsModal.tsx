@@ -1,49 +1,21 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { createContext, use, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
 import styles from './Styles';
+import { LangContext, LangProps } from '../../contexts/LangContext';
 
 interface SettingsModalProps {
     isVisible: boolean;
     onClose: () => void;
 }
 
-export type SettingProps = {
-    lang: string;
-    theme: string;
-    fontsizre: number;
-};
-
-export const defaultSetting: SettingProps = {
-    lang: 'THA',
-    theme: 'light',
-    fontsizre: 20,
-};
-
-export type SettingContextType = {
-    nowSetting: SettingProps;
-    setNowSetting: React.Dispatch<React.SetStateAction<SettingProps>>;
-    changeLang: (lang: string) => void;
-}
-
-export const SettingContext = createContext<SettingContextType>({
-    nowSetting: defaultSetting,
-    setNowSetting: () => { },
-    changeLang: () => { },
-});
-
 const SettingsModal: React.FC<SettingsModalProps> = ({ isVisible, onClose }) => {
-    const setting = useContext(SettingContext);
+    const { lang, selectLang } = useContext(LangContext);
 
-    const handleLanguageChange = (lang: string) => {
-        setting.setNowSetting((prev) => ({ ...prev, lang }));
-        setting.changeLang(lang);
+    const handleLanguageChange = (lang: LangProps) => {
+        selectLang(lang);
     }
-
-    useEffect(() => {
-        setting.changeLang(setting.nowSetting.lang);
-    }, []);
 
     return (
         <Modal
@@ -58,9 +30,9 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isVisible, onClose }) => 
 
                 <Text style={styles.settingmodal_styles.label}>ภาษา</Text>
                 <View style={styles.settingmodal_styles.buttonRow}>
-                    <TouchableOpacity onPress={() => handleLanguageChange('THA')} style={setting.nowSetting.lang == 'THA' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={setting.nowSetting.lang == 'THA' ? styles.settingmodal_styles.buttonText : {}}>ไทย</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleLanguageChange('ENG')} style={setting.nowSetting.lang == 'ENG' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={setting.nowSetting.lang == 'ENG' ? styles.settingmodal_styles.buttonText : {}}>English</Text></TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleLanguageChange('MYA')} style={setting.nowSetting.lang == 'MYA' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={setting.nowSetting.lang == 'MYA' ? styles.settingmodal_styles.buttonText : {}}>မြန်မာ</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleLanguageChange('THA')} style={lang == 'THA' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={lang == 'THA' ? styles.settingmodal_styles.buttonText : {}}>ไทย</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleLanguageChange('ENG')} style={lang == 'ENG' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={lang == 'ENG' ? styles.settingmodal_styles.buttonText : {}}>English</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleLanguageChange('MYA')} style={lang == 'MYA' ? styles.settingmodal_styles.activeButton : styles.settingmodal_styles.inactiveButton}><Text style={lang == 'MYA' ? styles.settingmodal_styles.buttonText : {}}>မြန်မာ</Text></TouchableOpacity>
                 </View>
 
                 <Text style={styles.settingmodal_styles.label}>ขนาดตัวอักษร</Text>

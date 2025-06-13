@@ -1,38 +1,40 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 type TabItem = {
     name: string;
     label: string;
     icon: keyof typeof MaterialCommunityIcons.glyphMap;
-    isActive: boolean;
 };
 
 const tabs: TabItem[] = [
-    { name: 'home', label: 'หน้าแรก', icon: 'home', isActive: true },
-    { name: 'livestock', label: 'ข้อมูลสัตว์', icon: 'book-open', isActive: false },
-    // { name: 'Add', label: 'เพิ่มสัตว์', icon: 'plus-circle', isActive: false },
-    { name: 'Alert', label: 'แจ้งเตือน', icon: 'bell', isActive: false },
-    { name: 'Settings', label: 'ตั้งค่า', icon: 'cog-outline', isActive: false },
+    { name: 'home', label: 'หน้าแรก', icon: 'home' },
+    { name: 'livestock', label: 'ข้อมูลสัตว์', icon: 'book-open' },
+    { name: 'notice', label: 'แจ้งเตือน', icon: 'bell' },
+    { name: 'setting', label: 'ตั้งค่า', icon: 'cog-outline' },
 ];
 
-interface Props {
-    nowpage?: string;
-    navigation: any;
-};
+const BottomNav: React.FC<BottomTabBarProps> = ({ navigation, state }) => {
+    const currentRouteName = state.routes[state.index].name;
 
-const BottomNav = ({ navigation, nowpage }: Props) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {display: tabs.some(tab => tab.name === currentRouteName) ? 'flex' : 'none'}]}>
             {tabs.map((tab, index) => (
-                <TouchableOpacity key={index} style={styles.tab} onPress={() => navigation.navigate(tab.name)}>
+                <TouchableOpacity
+                    key={index}
+                    style={styles.tab}
+                    onPress={() => {
+                        navigation.navigate(tab.name);
+                    }}
+                >
                     <MaterialCommunityIcons
                         name={tab.icon}
                         size={28}
-                        color={ tab.name == nowpage ? '#005E3D' : '#84b98e88'}
+                        color={tab.name === currentRouteName ? '#005E3D' : '#84b98e88'}
                     />
-                    <Text style={[styles.label, { color: tab.name == nowpage ? '#005E3D' : '#84b98e88' }]}>
+                    <Text style={[styles.label, { color: tab.name === currentRouteName ? '#005E3D' : '#84b98e88' }]}>
                         {tab.label}
                     </Text>
                 </TouchableOpacity>
